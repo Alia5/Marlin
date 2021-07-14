@@ -50,8 +50,8 @@ MMU2 mmu2;
 #include "../../core/debug_out.h"
 
 #define MMU_TODELAY 100
-#define MMU_TIMEOUT 10
-#define MMU_CMD_TIMEOUT 45000UL // 45s timeout for mmu commands (except P0)
+#define MMU_TIMEOUT 15
+#define MMU_CMD_TIMEOUT 65000UL // 45s timeout for mmu commands (except P0)
 #define MMU_P0_TIMEOUT 3000UL   // Timeout for P0 command: 3seconds
 
 #define MMU2_SEND(S) tx_str(F(S "\n"))
@@ -71,7 +71,7 @@ MMU2 mmu2;
 #define MMU_CMD_R0   0x60
 #define MMU_CMD_F0   0x70  // up to supported filaments
 
-#define MMU_REQUIRED_FW_BUILDNR TERN(MMU2_MODE_12V, 132, 126)
+#define MMU_REQUIRED_FW_BUILDNR TERN(MMU2_MODE_12V, 0, 0)
 
 #define MMU2_NO_TOOL 99
 #define MMU_BAUD    115200
@@ -468,7 +468,13 @@ inline void beep_bad_cmd() { BUZZ(400, 40); }
     command(MMU_CMD_C0);
     manage_response(true, true);
     for (uint8_t i = 0; i < MMU2_C0_RETRY; ++i) {  // Keep loading until filament reaches gears
-      if (mmu2s_triggered) break;
+      if (mmu2s_triggered) {
+         for (uint8_t j = 0; j < MMU2S_C0_EXTRA_PUSH; ++j) { // extra pushes if configured
+          command(MMU_CMD_C0);
+          manage_response(true, true);
+        }
+        break;
+      }
       command(MMU_CMD_C0);
       manage_response(true, true);
       check_filament();
