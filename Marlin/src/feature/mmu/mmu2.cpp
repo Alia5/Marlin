@@ -70,7 +70,7 @@ MMU2 mmu2;
 #define MMU_CMD_R0   0x60
 #define MMU_CMD_F0   0x70  // up to supported filaments
 
-#define MMU_REQUIRED_FW_BUILDNR TERN(MMU2_MODE_12V, 132, 126)
+#define MMU_REQUIRED_FW_BUILDNR TERN(MMU2_MODE_12V, 0, 0)
 
 #define MMU2_NO_TOOL 99
 #define MMU_BAUD    115200
