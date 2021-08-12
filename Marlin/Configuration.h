@@ -269,7 +269,7 @@
  * See additional options in Configuration_adv.h.
  * :["PRUSA_MMU1", "PRUSA_MMU2", "PRUSA_MMU2S", "EXTENDABLE_EMU_MMU2", "EXTENDABLE_EMU_MMU2S"]
  */
-#define MMU_MODEL PRUSA_MMU2
+#define MMU_MODEL PRUSA_MMU2S
 
 // A dual extruder that uses a single stepper motor
 //#define SWITCHING_EXTRUDER

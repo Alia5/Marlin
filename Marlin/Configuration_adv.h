@@ -2618,16 +2618,16 @@
                                                   // This short retract is done immediately, before parking the nozzle.
   #define FILAMENT_CHANGE_UNLOAD_FEEDRATE      8  // (mm/s) Unload filament feedrate. This can be pretty fast.
   #define FILAMENT_CHANGE_UNLOAD_ACCEL        25  // (mm/s^2) Lower acceleration may allow a faster feedrate.
-  #define FILAMENT_CHANGE_UNLOAD_LENGTH      130 // (mm) The length of filament for a complete unload.
+  #define FILAMENT_CHANGE_UNLOAD_LENGTH       80 // (mm) The length of filament for a complete unload.
                                                   //   For Bowden, the full length of the tube and nozzle.
                                                   //   For direct drive, the full length of the nozzle.
                                                   //   Set to 0 for manual unloading.
   #define FILAMENT_CHANGE_SLOW_LOAD_FEEDRATE   6  // (mm/s) Slow move when starting load.
-  #define FILAMENT_CHANGE_SLOW_LOAD_LENGTH     0  // (mm) Slow length, to allow time to insert material.
+  #define FILAMENT_CHANGE_SLOW_LOAD_LENGTH     0 // (mm) Slow length, to allow time to insert material.
                                                   // 0 to disable start loading and skip to fast load only
   #define FILAMENT_CHANGE_FAST_LOAD_FEEDRATE   6  // (mm/s) Load filament feedrate. This can be pretty fast.
   #define FILAMENT_CHANGE_FAST_LOAD_ACCEL     25  // (mm/s^2) Lower acceleration may allow a faster feedrate.
-  #define FILAMENT_CHANGE_FAST_LOAD_LENGTH     0  // (mm) Load length of filament, from extruder gear to nozzle.
+  #define FILAMENT_CHANGE_FAST_LOAD_LENGTH    23  // (mm) Load length of filament, from extruder gear to nozzle.
                                                   //   For Bowden, the full length of the tube and nozzle.
                                                   //   For direct drive, the full length of the nozzle.
   //#define ADVANCED_PAUSE_CONTINUOUS_PURGE       // Purge continuously up to the purge length until interrupted.
@@ -4233,11 +4233,11 @@
     // This is for Průša MK3-style extruders. Customize for your hardware.
     #define MMU2_FILAMENTCHANGE_EJECT_FEED 80.0
     #define MMU2_LOAD_TO_NOZZLE_SEQUENCE \
-      {  5.2, 1145 }, \
-      {  7.4,  871 }, \
-      { 16.0, 1393 }, \
-      {  7.4,  871 }, \
-      { 15.0,  198 }
+      {  2, 1145 }, \
+      {  7.2,  871 }, \
+      { 6.25, 1393 }, \
+      { 12.5,  871 }, \
+      { 6.25,  198 }
 
     #define MMU2_RAMMING_SEQUENCE \
       {   1.0, 1000 }, \
@@ -4245,12 +4245,12 @@
       {   2.0, 2000 }, \
       {   1.5, 3000 }, \
       {   2.5, 4000 }, \
-      {  -6.0, 5000 }, \
-      {   5.0, 1200 }, \
+      {  -7.5, 5000 }, \
+      {  -7.0, 1200 }, \
       {  -6.0,  600 }, \
-      {  10.0,  700 }, \
+      {     5,  700 }, \
       {  -5.0,  400 }, \
-      { -15.0, 2000 }
+      { -50.0, 2000 }
   #endif
 
   /**
@@ -4259,20 +4259,20 @@
    * See https://help.prusa3d.com/en/guide/3b-mk3s-mk2-5s-extruder-upgrade_41560, step 11
    */
   #if HAS_PRUSA_MMU2S
-    #define MMU2_C0_RETRY   5             // Number of retries (total time = timeout*retries)
+    #define MMU2_C0_RETRY   10             // Number of retries (total time = timeout*retries)
 
     #define MMU2_CAN_LOAD_FEEDRATE 800    // (mm/min)
     #define MMU2_CAN_LOAD_SEQUENCE \
       {  0.1, MMU2_CAN_LOAD_FEEDRATE }, \
-      {  45.0, MMU2_CAN_LOAD_FEEDRATE }, \
-      { -2.0, MMU2_CAN_LOAD_FEEDRATE }
+      {  25, MMU2_CAN_LOAD_FEEDRATE }, \
+      { -5, MMU2_CAN_LOAD_FEEDRATE }
 
     #define MMU2_CAN_LOAD_RETRACT   6.0   // (mm) Keep under the distance between Load Sequence values
     #define MMU2_CAN_LOAD_DEVIATION 0.8   // (mm) Acceptable deviation
 
     #define MMU2_CAN_LOAD_INCREMENT 0.2   // (mm) To reuse within MMU2 module
     #define MMU2_CAN_LOAD_INCREMENT_SEQUENCE \
-      { MMU2_CAN_LOAD_INCREMENT, MMU2_CAN_LOAD_FEEDRATE }
+      { -MMU2_CAN_LOAD_INCREMENT, MMU2_CAN_LOAD_FEEDRATE }
 
   #else
 
