@@ -87,7 +87,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_RAMPS_14_EFB
+  #define MOTHERBOARD BOARD_BTT_SKR_PRO_V1_2
 #endif
 
 /**
@@ -139,11 +139,6 @@
 
 // Enable the Bluetooth serial interface on AT90USB devices
 //#define BLUETOOTH
-
-// Choose the name from boards.h that matches your setup
-#ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_BTT_SKR_PRO_V1_2
-#endif
 
 // Name displayed in the LCD "Ready" message and Info menu
 #define CUSTOM_MACHINE_NAME "Plywood 3D Printer"
