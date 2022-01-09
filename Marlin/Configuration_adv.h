@@ -4233,11 +4233,11 @@
     // This is for Průša MK3-style extruders. Customize for your hardware.
     #define MMU2_FILAMENTCHANGE_EJECT_FEED 80.0
     #define MMU2_LOAD_TO_NOZZLE_SEQUENCE \
-      {  2, 1145 }, \
-      {  7.2,  871 }, \
-      { 6.25, 1393 }, \
-      { 12.5,  871 }, \
-      { 6.25,  198 }
+      {    2, 1145 }, \
+      {  4.2,  871 }, \
+      { 8.25, 1393 }, \
+      {  3.5,  871 }, \
+      { 4.25,  198 }
 
     #define MMU2_RAMMING_SEQUENCE \
       {   1.0, 1000 }, \
@@ -4260,6 +4260,7 @@
    */
   #if HAS_PRUSA_MMU2S
     #define MMU2_C0_RETRY   10             // Number of retries (total time = timeout*retries)
+    #define MMU2S_C0_EXTRA_PUSH 2
 
     #define MMU2_CAN_LOAD_FEEDRATE 800    // (mm/min)
     #define MMU2_CAN_LOAD_SEQUENCE \

@@ -472,7 +472,13 @@ static void mmu2_not_responding() {
     command(MMU_CMD_C0);
     manage_response(true, true);
     LOOP_L_N(i, MMU2_C0_RETRY) {  // Keep loading until filament reaches gears
-      if (mmu2s_triggered) break;
+      if (mmu2s_triggered) {
+        LOOP_L_N(j, MMU2S_C0_EXTRA_PUSH) { // extra pushes if configured
+          command(MMU_CMD_C0);
+          manage_response(true, true);
+        }
+        break;
+      };
       command(MMU_CMD_C0);
       manage_response(true, true);
       check_filament();
