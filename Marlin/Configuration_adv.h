@@ -4234,10 +4234,10 @@
     #define MMU2_FILAMENTCHANGE_EJECT_FEED 80.0
     #define MMU2_LOAD_TO_NOZZLE_SEQUENCE \
       {    2, 1145 }, \
-      {  4.2,  871 }, \
-      { 8.25, 1393 }, \
-      {  3.5,  871 }, \
-      { 4.25,  198 }
+      {  3.2,  871 }, \
+      { 6.25, 1393 }, \
+      {  2.5,  871 }, \
+      { 3.25,  198 }
 
     #define MMU2_RAMMING_SEQUENCE \
       {   1.0, 1000 }, \
@@ -4265,10 +4265,10 @@
     #define MMU2_CAN_LOAD_FEEDRATE 800    // (mm/min)
     #define MMU2_CAN_LOAD_SEQUENCE \
       {  0.1, MMU2_CAN_LOAD_FEEDRATE }, \
-      {  25, MMU2_CAN_LOAD_FEEDRATE }, \
-      { -5, MMU2_CAN_LOAD_FEEDRATE }
+      {  20, MMU2_CAN_LOAD_FEEDRATE }, \
+      { -4, MMU2_CAN_LOAD_FEEDRATE }
 
-    #define MMU2_CAN_LOAD_RETRACT   6.0   // (mm) Keep under the distance between Load Sequence values
+    #define MMU2_CAN_LOAD_RETRACT   4.0   // (mm) Keep under the distance between Load Sequence values
     #define MMU2_CAN_LOAD_DEVIATION 0.8   // (mm) Acceptable deviation
 
     #define MMU2_CAN_LOAD_INCREMENT 0.2   // (mm) To reuse within MMU2 module
